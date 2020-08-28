@@ -2,6 +2,8 @@ const express = require('express');
 const port = 4000;
 const app = express();
 
+module.exports = app;
+
 let count = 0;
 
 app.use(express.urlencoded({ extended: false }));
