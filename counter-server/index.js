@@ -12,7 +12,7 @@ app.use(express.json());
 
 
 //IMPORT ROUTES
-const listRoute = require('./routes/list');
+const listRoute = require('./routes/list.route');
 app.use('/list', listRoute, () => {
     console.log("mid2");
 });
