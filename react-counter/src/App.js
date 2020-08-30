@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+import { Form } from './components/form.comp'
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -76,6 +78,7 @@ class App extends React.Component {
         <button onClick={() => {this.increment(2) }} type="button">+2</button>
         <div></div>
         <p>List: {JSON.stringify(this.state.shoppingList)}</p>
+        <Form />
         <form onSubmit={this.handleSubmit}>
           <label>
             Item:
@@ -88,6 +91,7 @@ class App extends React.Component {
             console.log(this.state.itemToAdd)
           }} />
         </form>
+        <a href="/ui">Go to UI</a>
         <button onClick={  () => {
           this.listAdd('Dairy') ;
           console.log(this.state.shoppingList);

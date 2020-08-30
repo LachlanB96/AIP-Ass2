@@ -28,14 +28,21 @@ app.get('/api/count', (req, res) => {
     res.json({ count });
 });
 
+
 app.post('/api/increment', (req, res) => {
     count = count + parseInt(req.body.increment);
     //console.log(parseInt(req.body.increment));
     res.json({ count });
 });
 
+
+
 //DATABASE
-mongoose.connect('mongodb+srv://lachlan:pass@test.wdram.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true }, () => 
+mongoose.connect('mongodb+srv://lachlan:pass@test.wdram.mongodb.net/test?retryWrites=true&w=majority', 
+    { 
+        useUnifiedTopology: true,
+        useNewUrlParser: true 
+    }, () => 
     console.log("Connected to DB")
 );
 
