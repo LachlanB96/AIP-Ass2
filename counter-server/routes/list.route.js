@@ -24,8 +24,20 @@ router.get('/:itemName', async (req, res) => {
 
 //get price of item
 router.get('/getPrice/:itemName', async (req, res) => {
-    const item = await ListItem.findOne({'item': req.params.itemName});
+    const item = await ListItem.findOne({item: req.params.itemName});
     res.json(item.price);
+})
+
+//DELETE ITEM
+router.delete('/delete/:itemName', async (req, res) => {
+    const item = await ListItem.remove({item: req.params.itemName});
+    res.json(item);
+})
+
+//UPDATE ITEM
+router.patch('/update/:itemName', async (req, res) => {
+    const item = await ListItem.updateOne({item: req.params.itemName}, { $set: {price: 2.12}});
+    res.json(item);
 })
 
 router.get('/Cookies', (req, res) => {
