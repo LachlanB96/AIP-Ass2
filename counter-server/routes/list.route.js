@@ -45,21 +45,20 @@ router.get('/Cookies', (req, res) => {
     res.send(shoppingList);
 })
 
-router.post('/add', (req, res) => {
-    const listItem = new ListItem({
+router.post('/add', async (req, res) => {
+    const listItem = await new ListItem({
         item: req.body.grocery,
         price: 0.123
     });
     listItem.save()
     .then(data => {
-        
+        //console.log(data);
     })
     .catch(err => {
         res.json(err);
     });
-    shoppingList.push(req.body.grocery);
-    console.log(req.body.grocery);
-    res.json({shoppingList});
+    res.json({success: 'true'});
+    
 });
 
 module.exports = router;

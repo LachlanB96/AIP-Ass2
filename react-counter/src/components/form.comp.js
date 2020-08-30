@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import App from '../App';
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+
 
 export class Form extends Component {
 
@@ -11,20 +9,33 @@ export class Form extends Component {
         e.preventDefault();
     }
 
+    handleChange = input => event => {
+        this.setState({ [input]: event.target.value });
+    }
+
     render () {
         return (
-            <MuiThemeProvider>
-                <React.Fragment>
-                    <AppBar title="Enter Details" />
-                    <TextField 
-                        hintText="Enter your username"
-                        floatingLabelText="Username"
-                    />
-                    Hello World
-                </React.Fragment>
-            </MuiThemeProvider>
+            <div>
+                <InputLabel
+                 FormLabelClasses={{ asterisk: 'bar' }}
+                  classes={{ asterisk: 'bar' }}
+                >
+                    Foo
+                </InputLabel>
+                <TextField 
+                    hintText="Enter your username"
+                    floatingLabelText="Username"
+                />
+                <br />
+                <TextField 
+                    hintText="Enter your password"
+                    floatingLabelText="Password"
+                />
+            </div>
         )
     }
+
 }
 
 export default Form
+
