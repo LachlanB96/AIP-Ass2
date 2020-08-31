@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import CounterTest from './counterTest.comp'
 
 
 export class ApiTestSuite extends Component {
@@ -24,7 +23,7 @@ export class ApiTestSuite extends Component {
     }
     
     async listAdd(item) {
-        let response = await fetch('/list/add', { 
+        await fetch('/list/add', { 
             method: 'POST',
             headers: {'Content-Type': 'application/json;charset=utf-8'},
             body: JSON.stringify({ grocery: item })});
@@ -59,18 +58,15 @@ export class ApiTestSuite extends Component {
                     <label>
                         Item:
                         <input type="text" value={this.state.itemToAdd} onChange={(event) => {
-                        //console.log(this.state.itemToAdd);
                         this.handleChange(event);
                         }} />
                     </label>
                     <input type="submit" value="Submit" onClick={() => {
-                        console.log(this.state.itemToAdd)
                     }} />
                 </form>
                 <a href="/ui">Go to UI</a>
                 <button onClick={  () => {
                     this.listAdd('Dairy');
-                    console.log(this.state.shoppingList);
                 }} type="button">
                     Dairy!
                 </button>
@@ -79,11 +75,6 @@ export class ApiTestSuite extends Component {
                 }} type="button">
                     Console Log List
                 </button>
-                <TextField 
-                    hintText="Enter your username"
-                    floatingLabelText="Username"
-                />
-                <CounterTest />
             </div>
         )
     }

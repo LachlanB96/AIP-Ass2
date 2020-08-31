@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 
 module.exports = app;
 
-let count = 0;
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

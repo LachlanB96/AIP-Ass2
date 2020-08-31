@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-//SEARCH FOR ITEM
+//SEARCH FOR USER
 router.get('/:username', async (req, res) => {
     const user = await User.findOne({ 'username': req.params.username });
     res.json(user);
