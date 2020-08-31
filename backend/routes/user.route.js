@@ -58,6 +58,12 @@ router.delete('/deleteID/:userID', async (req, res) => {
     res.json(user);
 })
 
+router.delete('/delete/:username', async (req, res) => {
+    console.log(req.params.username);
+    const user = await User.deleteOne({ 'username': req.params.username });
+    res.json(user);
+})
+
 module.exports = router;
 
 // http://localhost:3000/api/users/add?username=lachlanb&password=pass&admin=true
