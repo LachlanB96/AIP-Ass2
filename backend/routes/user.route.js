@@ -53,7 +53,8 @@ router.post('/add', async (req, res) => {
 
 //DELETE USER
 router.delete('/deleteID/:userID', async (req, res) => {
-    const user = await User.deleteOne({ _id: req.params.userID });
+    console.log(req.params.userID);
+    const user = await User.deleteOne({ '_id': req.params.userID });
     res.json(user);
 })
 

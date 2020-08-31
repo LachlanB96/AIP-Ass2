@@ -26,6 +26,8 @@ export class UserCreate extends Component {
                 admin: this.state.admin
             })
         });
+
+        event.preventDefault();
     }
 
     render() {
