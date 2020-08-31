@@ -4,25 +4,26 @@ let server = require("../index");
 
 var assert = require('chai').assert
 
-
 chai.use(chaiHttp);
 
 describe("API", () => {
 
+
+    //UNIT TESTS
     describe("GET /api/users", () => {
-        it ("It should return an object", (done) => {
+        it ("It should return an object that exists", (done) => {
             chai.request(server)
                 .get("/api/users")
                 .end((err, res) => {
-                    assert.equal(res.status, 200, "Status is 200");
+                    assert.equal(res.status, 200, "Server is operational.");
                     assert.isObject(res.body);
                 done();
             })
         })
     })
 
-    describe("GET LachlanB user /api/users/lachlanb", () => {
-        it("Admin field of user should be boolean.", (done) => {
+    describe("GET /api/users/lachlanb", () => {
+        it("Should return an object with the correct properties.", (done) => {
             chai.request(server)
                 .get("/api/users/lachlanb")
                 .end((err, res) => {
@@ -34,9 +35,20 @@ describe("API", () => {
     })
 
     
-
-    describe("GET unknown user /api/users/unknown", () => {
-        it("Get user 'unknown' who doesn't exist.", (done) => {
+    //END-TO-END TESTS
+    /* We will:
+    * Check non-existant user
+    * Create user
+    * Check user now exists
+    * Delete the user
+    * Check the user no longer exists
+    * 
+    * NOTE, this is probably not the best way to do end-to-end tests.
+    *    The extra checks between each request seem redundant, but I do
+    *   not know a better solution yet.
+    */
+    describe("GET /api/users/unknown (unknown does not exist)", () => {
+        it("Should fail to get user 'unknown' who doesn't exist.", (done) => {
             chai
             .request(server)
             .get("/api/users/unknown")
@@ -47,8 +59,8 @@ describe("API", () => {
         })
     })
 
-    describe("Create unknown user /api/users/add/", () => {
-        it("Create user 'unknown'", (done) => {
+    describe("POST Create unknown user /api/users/add/", () => {
+        it("Should Create user 'unknown'", (done) => {
             chai
                 .request(server)
                 .post("/api/users/add")
@@ -67,71 +79,35 @@ describe("API", () => {
     describe("GET unknown user /api/users/unknown", () => {
         it("Get user 'unknown' who DOES NOW exist.", (done) => {
             chai
-                .request(server)
-                .get("/api/users/unknown")
-                .end((err, res) => {
-                    assert.exists(res.body);
-                    done();
-                })
+            .request(server)
+            .get("/api/users/unknown")
+            .end((err, res) => {
+                assert.exists(res.body);
+                done();
+            })
         })
     })
 
     describe("DELETE /api/users/delete/<username>", () => {
         it("DELETE user 'unknown'.", (done) => {
             chai
-                .request(server)
-                .delete("/api/users/delete/unknown")
-                .end((err, res) => {
-                    assert.exists(res.body);
-                    done();
-                })
+            .request(server)
+            .delete("/api/users/delete/unknown")
+            .end((err, res) => {
+                assert.exists(res.body);
+                done();
+            })
         })
     })
     describe("GET unknown user /api/users/unknown", () => {
         it("Get user 'unknown' who doesn't exist.", (done) => {
             chai
-                .request(server)
-                .get("/api/users/unknown")
-                .end((err, res) => {
-                    assert.notExists(res.body);
-                    done();
-                })
+            .request(server)
+            .get("/api/users/unknown")
+            .end((err, res) => {
+                assert.notExists(res.body);
+                done();
+            })
         })
     })
-
-    // describe("POST /api/increment", () => {
-    //     it ("Increment { count } by 2 via POST", async () => {
-    //         chai
-    //         .request(server)
-    //         .post("/api/increment")
-    //         .send({increment: 2})
-    //         .end((err, res) => {
-    //             if (err) return done(err);
-    //             assert.equal(res.status, 200);
-    //             assert.equal(res.body.count, 2);
-    //         })
-    //     })
-    //     it ("Increment { count } by 3 via POST", async () => {
-    //         chai
-    //         .request(server)
-    //         .post("/api/increment")
-    //         .send({increment: 3})
-    //         .end((err, res) => {
-    //             if (err) return done(err);
-    //             assert.equal(res.status, 200);
-    //             assert.equal(res.body.count, 5);
-    //         })
-    //     })
-    //     it ("Increment { count } by not 3 via POST", async () => {
-    //         chai
-    //         .request(server)
-    //         .post("/api/increment")
-    //         .send({increment: 20})
-    //         .end((err, res) => {
-    //             if (err) return done(err);
-    //             assert.equal(res.status, 200);
-    //             assert.notEqual(res.body.count, 8);
-    //         })
-    //     })
-    // })
 });

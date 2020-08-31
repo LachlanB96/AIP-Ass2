@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
+import Input from './input.ui.comp'
 
 
 export class ApiTestSuite extends Component {
@@ -59,6 +60,7 @@ export class ApiTestSuite extends Component {
                         )
                     })}
                 </ul>
+                <Input />
                 <form onSubmit={this.handleSubmit('userDelete')}>
                     <label>
                         Delete User:
