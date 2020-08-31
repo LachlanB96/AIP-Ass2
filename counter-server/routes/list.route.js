@@ -46,6 +46,7 @@ router.get('/Cookies', (req, res) => {
 })
 
 router.post('/add', async (req, res) => {
+    console.log(req.body);
     const listItem = await new ListItem({
         item: req.body.grocery,
         price: 0.123

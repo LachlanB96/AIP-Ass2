@@ -13,8 +13,15 @@ app.use(express.json());
 
 //IMPORT ROUTES
 const listRoute = require('./routes/list.route');
+const userRoute = require('./routes/user.route');
+
+
 app.use('/list', listRoute, () => {
     console.log("mid2");
+});
+
+app.use('/api/users', userRoute, (req, res) => {
+    console.log(res);
 });
 
 //MIDDLEWARE
