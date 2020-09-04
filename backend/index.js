@@ -20,7 +20,7 @@ app.use('/list', listRoute, () => {
 });
 
 app.use('/api/users', userRoute, (req, res) => {
-    console.log(res);
+    //console.log(res);
 });
 
 //MIDDLEWARE

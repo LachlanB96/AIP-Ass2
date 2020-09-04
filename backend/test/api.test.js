@@ -12,11 +12,12 @@ describe("API", () => {
     //UNIT TESTS
     describe("GET /api/users", () => {
         it ("It should return an object that exists", (done) => {
-            chai.request(server)
-                .get("/api/users")
-                .end((err, res) => {
-                    assert.equal(res.status, 200, "Server is operational.");
-                    assert.isObject(res.body);
+            chai
+            .request(server)
+            .get("/api/users")
+            .end((err, res) => {
+                assert.equal(res.status, 200, "Server is operational.");
+                assert.isObject(res.body);
                 done();
             })
         })
@@ -24,13 +25,14 @@ describe("API", () => {
 
     describe("GET /api/users/lachlanb", () => {
         it("Should return an object with the correct properties.", (done) => {
-            chai.request(server)
-                .get("/api/users/lachlanb")
-                .end((err, res) => {
-                    assert.isBoolean(res.body.admin, "Admin status is boolean.");
-                    assert.equal(res.body.password, 'hunter2');
-                    done();
-                })
+            chai
+            .request(server)
+            .get("/api/users/lachlanb")
+            .end((err, res) => {
+                assert.isBoolean(res.body.admin, "Admin status is boolean.");
+                assert.equal(res.body.password, 'hunter2');
+                done();
+            })
         })
     })
 
@@ -62,17 +64,17 @@ describe("API", () => {
     describe("POST Create unknown user /api/users/add/", () => {
         it("Should Create user 'unknown'", (done) => {
             chai
-                .request(server)
-                .post("/api/users/add")
-                .send({
-                    username: 'unknown',
-                    password: 'password1',
-                    admin: 'false'
-                })
-                .end((err, res) => {
-                    assert.equal(res.body.success, 'true');
-                    done();
-                })
+            .request(server)
+            .post("/api/users/add")
+            .send({
+                username: 'unknown',
+                password: 'password1',
+                admin: 'false'
+            })
+            .end((err, res) => {
+                assert.equal(res.body.success, 'true');
+                done();
+            })
         })
     })
 

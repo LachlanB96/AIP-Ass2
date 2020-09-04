@@ -30,10 +30,6 @@ router.get('/getStatus/:username', async (req, res) => {
 
 //Add user
 router.post('/add', async (req, res) => {
-    console.log(req.body.username);
-    console.log(req.body.password);
-    console.log(req.body.admin);
-    console.log(req.body);
     const user = await new User({
         username: req.body.username,
         password: req.body.password,
@@ -53,13 +49,11 @@ router.post('/add', async (req, res) => {
 
 //DELETE USER
 router.delete('/deleteID/:userID', async (req, res) => {
-    console.log(req.params.userID);
     const user = await User.deleteOne({ '_id': req.params.userID });
     res.json(user);
 })
 
 router.delete('/delete/:username', async (req, res) => {
-    console.log(req.params.username);
     const user = await User.deleteOne({ 'username': req.params.username });
     res.json(user);
 })
