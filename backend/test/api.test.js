@@ -37,7 +37,7 @@ describe("API", () => {
     
     //END-TO-END TESTS
     /* We will:
-    * Check non-existant user
+    * Check non-existent user
     * Create user
     * Check user now exists
     * Delete the user

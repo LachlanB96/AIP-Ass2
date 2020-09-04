@@ -2,6 +2,7 @@ const express = require('express');
 const port = 4000;
 const app = express();
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 module.exports = app;
 
@@ -43,7 +44,7 @@ app.post('/api/increment', (req, res) => {
 
 
 //DATABASE
-mongoose.connect('mongodb+srv://lachlan:pass@test.wdram.mongodb.net/test?retryWrites=true&w=majority', 
+mongoose.connect(process.env.DB_CONNECTION, 
     { 
         useUnifiedTopology: true,
         useNewUrlParser: true 
