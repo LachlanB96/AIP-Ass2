@@ -8,18 +8,20 @@ import UserGet from './components/userGet.comp';
 import FavourCreate from './components/favourCreate.comp';
 import FavourGet from './components/favourGet.comp';
 
-import AppBar from '@material-ui/core/AppBar';
+import Navbar from 'react-bootstrap/Navbar';
+
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import Form from 'react-bootstrap/Form'
+import FormControl from 'react-bootstrap/FormControl'
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 
 
 class App extends React.Component {
@@ -28,59 +30,50 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <div>
-                <AppBar>
-                    <Toolbar>
-                        <IconButton>
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography component="h1" variant="h6" color="inherit" noWrap >
-                            Dashboard
-                        </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
-                    </Toolbar>
-                </AppBar>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
+                    <Navbar bg="dark" fg="light">
+                        <Navbar.Brand href="#home">AIP Ass2 LB v0.2</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="mr-auto">
+                                <Nav.Link href="#home">Users</Nav.Link>
+                                <Nav.Link href="#link">Favours</Nav.Link>
+                                <Nav.Link href="#link">Leaderboards</Nav.Link>
+                                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="#action/3.1">Logout</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.2">Account Settings</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.3">App Information</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="#action/3.4">Admin Control Panel</NavDropdown.Item>
+                                </NavDropdown>
+                            </Nav>
+                            <Form inline>
+                                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                                <Button variant="outline-success">Search</Button>
+                            </Form>
+                        </Navbar.Collapse>
+                    </Navbar>
                 </div>
-                <main>
-                    <div />
-                    <Container maxWidth="lg">
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} md={8} lg={9}>
-                                <Paper >
-                                    <UserCreate />
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Paper >
-                                    <UserGet />
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={9}>
-                                <Paper >
-                                    <FavourCreate />
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={1}>
-                                <Paper >
-                                    <FavourGet />
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Paper >
-                                    <ApiTestSuite />
-                                </Paper>
-                            </Grid>
-                        </Grid>
-                    </Container>
-                </main>
+                <Container>
+                    <Row>
+                        <Col>
+                            <UserCreate />
+                        </Col>
+                        <Col>
+                            <UserGet />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <FavourCreate />
+                        </Col>
+                        <Col>
+                            <FavourGet />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <ApiTestSuite />
+                    </Row>
+                </Container>
             </React.Fragment>
         )
     }

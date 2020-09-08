@@ -27,8 +27,15 @@ const FavourSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    repaidOn: {
+        type: Date
+    },
     reward: {
-        type: String
+        type: [String]
+    },
+    public: {
+        type: Boolean,
+        default: true
     }
 });
 
