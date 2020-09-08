@@ -11,46 +11,35 @@ app.use(express.json());
 
 
 //IMPORT ROUTES
-const listRoute = require('./routes/list.route');
 const userRoute = require('./routes/user.route');
+const favourRoute = require('./routes/favour.route');
 
-
-app.use('/list', listRoute, () => {
-    console.log("mid2");
-});
 
 app.use('/api/users', userRoute, (req, res) => {
     //console.log(res);
 });
 
-//MIDDLEWARE
-app.use('/mid', () => {
-    console.log("mid");
+app.use('/api/favours', favourRoute, (req, res) => {
+    //console.log(res);
 });
-
-
-//ROUTES
-app.get('/api/count', (req, res) => {
-    res.json({ count });
-});
-
-
-app.post('/api/increment', (req, res) => {
-    count = count + parseInt(req.body.increment);
-    //console.log(parseInt(req.body.increment));
-    res.json({ count });
-});
-
 
 
 //DATABASE
-mongoose.connect(process.env.DB_CONNECTION, 
+mongoose.connect(
+    process.env.DB_PROTOCOL + '://' +
+    process.env.DB_USER + ':' +
+    process.env.DB_PASS + '@' +
+    process.env.DB_ADDR + '/' +
+    process.env.DB_STORE + '?' +
+    process.env.DB_PARAMS,
     { 
         useUnifiedTopology: true,
         useNewUrlParser: true 
     }, () => 
     console.log("Connected to DB")
 );
+
+
 
 app.listen(port, () => {
     console.log(`API available at http://localhost:${port}/api`);

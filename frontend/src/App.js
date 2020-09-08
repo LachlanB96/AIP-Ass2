@@ -3,8 +3,11 @@
 import React from 'react';
 import './App.css';
 import ApiTestSuite from './components/apiTestSuite.comp';
-import UserCreate from './components/userCreate.comp'
-import UserGet from './components/userGet.comp'
+import UserCreate from './components/userCreate.comp';
+import UserGet from './components/userGet.comp';
+import FavourCreate from './components/favourCreate.comp';
+import FavourGet from './components/favourGet.comp';
+
 import AppBar from '@material-ui/core/AppBar';
 
 
@@ -27,12 +30,7 @@ class App extends React.Component {
                 <div>
                 <AppBar>
                     <Toolbar>
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            // onClick={handleDrawerOpen}
-                        >
+                        <IconButton>
                             <MenuIcon />
                         </IconButton>
                         <Typography component="h1" variant="h6" color="inherit" noWrap >
@@ -63,6 +61,16 @@ class App extends React.Component {
                             <Grid item xs={12} md={4} lg={3}>
                                 <Paper >
                                     <UserGet />
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={12} md={6} lg={9}>
+                                <Paper >
+                                    <FavourCreate />
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={12} md={6} lg={1}>
+                                <Paper >
+                                    <FavourGet />
                                 </Paper>
                             </Grid>
                             <Grid item xs={12}>
