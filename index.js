@@ -40,7 +40,4 @@ mongoose.connect(
 );
 
 
-
-app.listen(port, () => {
-    console.log(`API available at http://localhost:${port}/api`);
-});
+app.listen(process.env.PORT || 4000)
