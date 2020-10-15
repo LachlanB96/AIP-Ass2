@@ -23,7 +23,8 @@ app.use('/api/favours', favourRoute, (req, res) => {
     //console.log(res);
 });
 
-app.use(express.static('client/build'));
+app.use(express.static('frontend/build'));
+
 
 //DATABASE
 mongoose.connect(
