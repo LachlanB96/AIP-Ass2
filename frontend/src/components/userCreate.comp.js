@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {InputGroup, FormControl} from 'react-bootstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export class UserCreate extends Component {

@@ -19,7 +19,7 @@ const FavourSchema = mongoose.Schema({
         default: Date.now,
         required: true
     },
-    image: {
+    image: { // Do we want to store an Array of imgs? Do we want to store the URL?
         data: Buffer,
         contentType: String
     },

@@ -18,13 +18,34 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import { InputGroup } from 'react-bootstrap';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+import Input from './components/input.ui.comp'
+
 
 
 class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { users: [] };
+    }
+
+    async componentDidMount() {
+        await this.getUsers();
+    }
+
+    async getUsers() {
+        let response = await fetch('/api/users');
+        let { users } = await response.json();
+        this.setState({ users });
+        console.log("users: ");
+        console.log(this.state.users);
+    }
 
     render () {
         return (

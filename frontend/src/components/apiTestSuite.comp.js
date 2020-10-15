@@ -3,6 +3,11 @@ import TextField from '@material-ui/core/TextField';
 import Input from './input.ui.comp'
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import { InputGroup, FormControl, Form } from 'react-bootstrap';
+
+
+import { PersonCircle, KeyFill } from 'react-bootstrap-icons';
+
 
 
 export class ApiTestSuite extends Component {
@@ -61,6 +66,34 @@ export class ApiTestSuite extends Component {
         console.log(this.state.favours);
         return (
             <div style={{border: '3px solid red'}}>
+                <InputGroup className="mb-1">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="basic-addon1">
+                            <PersonCircle />
+                        </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl placeholder="Username" />
+                </InputGroup>
+                <InputGroup className="mb-1">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="basic-addon2">
+                            <KeyFill />
+                        </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl placeholder="Password" />
+                </InputGroup>
+
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text>Admin</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <Form>
+                        <Form.Control as="select">
+                            <option>False</option>
+                            <option>True</option>
+                        </Form.Control>
+                    </Form>
+                </InputGroup>
                 <h1>API Test Suite</h1>
                 <Container maxWidth="lg">
                     <Grid container spacing={3}>
@@ -120,6 +153,9 @@ export class ApiTestSuite extends Component {
                         </Grid>
                     </Grid>
                 </Container>
+                <Input />
+                <Input users={this.state.users} />
+
             </div>
         )
     }
